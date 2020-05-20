@@ -1,11 +1,14 @@
 const ex = require('express')
 
+
 const control = require('../controllers/order')
 
 const rout = ex.Router()
 
-rout.get('/', control.getOrder)
+const passport = require('passport')
 
-rout.post('/', control.createOrder)
+rout.get('/',passport.authenticate('jwt',{session:false}) , control.getOrder)
+
+rout.post('/',passport.authenticate('jwt',{session:false}) , control.createOrder)
 
 module.exports = rout

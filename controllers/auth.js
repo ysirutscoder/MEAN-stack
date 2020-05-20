@@ -46,7 +46,7 @@ module.exports.register = async (req, res) => {
             await user.save()
             res.status(201).json(user)
         } catch (erorr) {
-            errorHandler(res,erorr);
+            errorHandler(res, erorr);
         }
 
     }

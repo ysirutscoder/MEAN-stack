@@ -1,14 +1,18 @@
 const ex = require('express')
 
-const control = require('../controllers/position')
-
 const rout = ex.Router()
 
-rout.get('/:categoryId', control.positionGet)
+const control = require('../controllers/position')
 
-rout.post('/', control.positionCreate)
+const passport = require('passport')
 
-rout.patch('/:id', control.positionUpdate)
-rout.delete('/:id', control.positionDelete)
+
+
+rout.get('/:categoryId',passport.authenticate('jwt',{session:false}), control.positionGet)
+
+rout.post('/',passport.authenticate("jwt",{session:false}) , control.positionCreate)
+
+rout.patch('/:id',passport.authenticate('jwt',{session:false}) , control.positionUpdate)
+rout.delete('/:id',passport.authenticate('jwt',{session:false}) , control.positionDelete)
 
 module.exports = rout
