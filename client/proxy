@@ -1,0 +1,15 @@
+backend
+
+http://localhost:500/api/auth/login
+http://localhost:500/api/auth/register
+http://localhost:500/category
+http://localhost:500/api/position
+http://localhost:500/api/order
+
+frontend //ajax
+
+/api/auth/login
+/api/auth/register
+/category
+/api/position
+/api/order
